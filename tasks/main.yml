@@ -1,0 +1,16 @@
+---
+- name: Install ZFS
+  tags: zfs
+  become: true
+  block:
+    - name: Install ZFS
+      apt:
+        name: zfsutils-linux
+        default_release: "{{ ansible_distribution_release }}-backports"
+
+    - name: Configure datasets
+      zfs:
+        name: "{{ item.key }}"
+        extra_zfs_properties: "{{ item.value or omit }}"
+        state: present
+      with_dict: "{{ zfs_datasets }}"

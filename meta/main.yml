@@ -1,0 +1,19 @@
+galaxy_info:
+  author: Joe Nyland
+  role_name: zfs
+  namespace: joenyland
+  description: Installs ZFS and configures datasets
+  license: MIT
+  min_ansible_version: '2.1'
+  platforms:
+  - name: Debian
+    versions:
+      - bullseye # 11 (stable)
+  galaxy_tags:
+    - debian
+    - zfs
+dependencies:
+  - role: joenyland.debian_backports
+    vars:
+      debian_backports_additional_components:
+        - contrib
