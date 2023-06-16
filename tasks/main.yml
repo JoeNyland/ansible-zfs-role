@@ -3,10 +3,16 @@
   tags: zfs
   become: true
   block:
+    - name: Install contrib repo
+      apt_repository:
+        repo: deb http://deb.debian.org/debian {{ ansible_distribution_release }} main contrib
+        state: present
+        filename: '{{ ansible_distribution_release }}-contrib'
+        update_cache: true
+
     - name: Install ZFS
       apt:
         name: zfsutils-linux
-        default_release: "{{ ansible_distribution_release }}-backports"
 
     - name: Configure datasets
       zfs:

@@ -12,8 +12,3 @@ galaxy_info:
   galaxy_tags:
     - debian
     - zfs
-dependencies:
-  - role: joenyland.debian_backports
-    vars:
-      debian_backports_additional_components:
-        - contrib
