@@ -5,9 +5,9 @@
   block:
     - name: Install contrib repo
       apt_repository:
-        repo: deb http://deb.debian.org/debian {{ ansible_distribution_release }} main contrib
+        repo: deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib
         state: present
-        filename: '{{ ansible_distribution_release }}-contrib'
+        filename: contrib
         update_cache: true
 
     - name: Install ZFS
