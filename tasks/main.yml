@@ -13,3 +13,24 @@
         extra_zfs_properties: "{{ item.value or omit }}"
         state: present
       with_dict: "{{ zfs_datasets }}"
+- name: Load ZFS encryption keys automatically on boot
+  tags:
+    - zfs
+    - encryption
+  become: true
+  block:
+    - name: Create systemd drop-in directory
+      file:
+        path: /etc/systemd/system/zfs-mount.service.d
+        state: directory
+        mode: '0755'
+    - name: Ensure encrption keys are loaded on boot
+      copy:
+        content: |
+          [Unit]
+          Description=Load ZFS encryption keys
+          [Service]
+          ExecStartPre=/usr/sbin/zfs load-key -a
+        dest: /etc/systemd/system/zfs-mount.service.d/load-key.conf
+        mode: '0644'
+  when: zfs_boot_load_keys

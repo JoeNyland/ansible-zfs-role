@@ -13,6 +13,10 @@ None.
 Role Variables
 --------------
 
+### `zfs_boot_load_keys`
+
+Should encryption keys be loaded at boot? Defaults to `false`.
+
 ### `zfs_datasets`
 
 A hash of ZFS datasets. Any properties defined here will be set on the datasets.
