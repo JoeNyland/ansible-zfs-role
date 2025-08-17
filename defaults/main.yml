@@ -1,2 +1,11 @@
 ---
+# Datasets to create on the ZFS pool
+# The key should be the dataset name, and the value is a dictionary of ZFS properties
+# to set on the dataset.
+# Example:
+# zfs_datasets:
+#   mypool/mydataset:
+#     mountpoint: /mnt/mydataset
+#     compression: lz4
+#   mypool/anotherdataset:
 zfs_datasets: {}
