@@ -9,7 +9,6 @@ galaxy_info:
   - name: Debian
     versions:
       - bullseye # 12 (stable)
-      - bullseye # 11 (stable)
   galaxy_tags:
     - debian
     - zfs
