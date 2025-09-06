@@ -6,6 +6,7 @@
     - name: Install ZFS
       apt:
         name: zfsutils-linux
+        update_cache: yes
 
     - name: Configure datasets
       zfs:
